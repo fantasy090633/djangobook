@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request META list</title>
+</head>
+<body>
+    {% for key,value in meta %}
+        key:{{ key }} -- value:{{ value }}
+        <br/>
+    {% endfor %}
+</body>
+</html>

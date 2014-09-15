@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Html Escaping</title>
+</head>
+<body>
+    ‘tag_h1’：{{ tag_h1 }}
+    <br/>
+    ‘tag_h1|safe’：{{ tag_h1|safe }}
+    {% autoescape off %}
+        autoescape off：{{ tag_h1 }}
+        {% autoescape on %}
+            autoescape on：{{ tag_h1 }}
+        {% endautoescape %}
+    {% endautoescape %}
+    <br/>
+    {{ data|default:"3 &lt;h1&gt; 2" }}
+    <br/>
+    {{ data|default:"3 <h1> 2" }}
+    <br/>
+    {% load poll_extras %}
+    {{ 'XXX XXX'|find_replace:' ' }}
+    <br/>
+    {{ 'XXX XXX'|my_lower}}
+    <br/>
+    do_current_time:{% do_current_time '%Y-%m-%d %I:%M %p' %}
+    <br/>
+    {% current_time '%Y-%m-%d %I:%M %p' %}
+    current_time:{{ current_time }}
+    <br/>
+    {% do_current_time3 '%Y-%m-%d %I:%M %p' as xxx %}
+    do_current_time3:{{ xxx }}
+    <br/>
+    {% upper %}
+        This will appear in uppercase, {{ tag_h1 }}
+    {% endupper %}
+    <br/>
+    current_time_simple: {% current_time_simple '%Y-%m-%d %I:%M %p' %}
+</body>
+</html>
